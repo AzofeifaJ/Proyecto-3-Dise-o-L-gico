@@ -18,28 +18,34 @@
 Este proyecto consiste en el desarrollo de un circuito del algoritmo de Booth por medio del diseño de una unidad de cálculo de multiplicación, mediante utilización de Verilog y el suit de herramintas de Vivado, así como la implementación de diseño digital en una FPGA en este caso una NEXYS 3 ddr para demostrar su funcionamiento, este proyecto consta de un subsistema de lectura de datos y un subsistema para el cálculo de multiplicación, además de un subsistema de conversión de binario a representación BCD y así como un ubsistema de despliegue en display de 7 segmentos.
 
 ## Descripción de cada subsistema
-### Subsistema de lectura y decodificación de código Gray
-En este primer subsistema el programa traduce la entrada de cuatro conmutadores en código gray a formato del código binario. La entrada del código es capturada y sincronizada con el sistema principal, para que posterior se realice un muestreo de estos con una duración de al menos cada 500 ms. Como se muestra en la imagen a continuación sobre la implementación y la correcta trasformación del Código Binario de 4 bits a partir de un Código de Gray necesario al llevar a cabo este circuito para mostrar un numero final decimal.
+### Subsistema de lectura de datos
+En este primer subsistema adquiere los operando A y B de 8 bits cada uno para realizar la operación de multiplicación, los cuales se interpretarán con signo en complemento a 2. La entrada del código es capturada y sincronizada con el sistema principal por medio de un circuito antirebote de al menos 4 etapas (4 FF en cascada) por switch. El circuito esperara ante el accionar de un push button que es presionado y sostenido por 500ms. Al cumplirse este tiempo, el sistema da inicio a la operación aritmética de multiplicación, no se inicia otra operación hasta que el push button vuelve a su estado inicial en caso de haberse cumplido lo mencionado anteriormente.
 
-#### Imagen correspondiente al Código Gray de 4 bits
-
-
-
-
-### Subsistema de despliegue de código ingresado traducido a formato binario en luces LED
-En este segundo subsistema se toma los datos ya pasados a código binario y los despliega en cuatro luces LED, además en esta sección se presenta el refrescamiento de las luces al menos cada 500 ms por parte sistema, en esta sección es importante mencionar que en cuanto al funcionamiento del LED la corriente siempre fluye de ánodo a cátodo, en el cual el ánodo se conecta al voltaje positivo de la fuente y el cátodo se conecta a tierra o al voltaje negativo de la fuente, representado en la siguiente imagen.
-
-#### Imagen correspondiente al encendido de LEDs en NEXYS 4 ddr
+#### Imagen correspondiente a
 
 
 
 
 
+### Subsistema para el cálculo de multiplicación
+En este segundo subsistema recibe los operandos A y B del subsistema de lectura, la operación de multiplicación se inicia cuando el subsistema de lectura le indique a este subsistema que los operandos son válidos por medio de una bandera valid. El cálculo de multiplicación con signo se realiza de manera iterativa por medio del Algoritmo de Booth. Este bloque indica al siguiente bloque consecutivo cuando el resultado de la multiplicación está estable para ser muestreado con una señal done,  representado en la siguiente imagen.
 
-### Subsistema de despliegue de código decodificado en display de 7 segmentos.
-En este tercer subsistema tiene la tasa de refresco para la adecuada visualización, se toma los datos en código binario anteriormente ralizado y se procede a desplegar los dispositivos 7 segmentos disponibles, para realziar esta parte es importante mencionar la conexión de los pines a la FPGA de la NEXYS4 ddr la cual es necesaria para asignar el valor al encendido de los 7 segmentos numerados de A a G según corresponda para mostrar cada determinado valor, como se muestra en la imagen a continuación: 
+#### Imagen correspondiente a
 
-#### Imagen de la distribución de los componentes en la NEXYS 4 ddr
+
+
+
+
+### Subsistema de conversión de binario a representación BCD
+En este tercer subsistema registra el resultado del bloque anterior (16 bits con signo) y lo convierte en un formato BCD, además genera al menos 5 dígitos en BCD y uno de signo para el siguiente bloque, se indica al siguiente bloque por medio de una bandera de done cuando está lista la conversión para registrar, como se muestra en la imagen a continuación: 
+
+#### Imagen de la distribución de los componentes en la NEXYS 3 ddr
+
+
+
+
+### Subsistema de despliegue en display de 7 segmentos
+En este tercer subsistema se toma el resultado de la multiplicación en BCD y los despliega en los dispositivos 7 segmentos disponibles en la placa, de forma decimal e incluyendo el signo, en donde se utiliza menos 6 dígitos disponibles del 7 segmentos. Por otro lado, el sistema tiene la tasa de refresco adecuada para una visualización cómoda por parte del usuario.
 
 #### Imagen de la distribución de pines del display de 7 segmentos
 
@@ -55,23 +61,22 @@ A continuación se muestra un diagrama de bloques sobre el funcionamiento genera
 
 
 
-#### Subsistema de lectura y decodificación de código Gray.
+#### Subsistema de lectura de datos.
 
 
 
 
-#### Subsistema de lectura y decodificación de código Gray.
+#### Subsistema de cálculo de multiplicación.
 
 
 
 
-#### Subsistema de despliegue de código ingresado traducido a formato binario en luces LED.
+#### Subsistema de conversión de binario a representación BCD.
 
 
 
 
-#### Subsistema de despliegue de código decodificado en display de 7 segmentos.
-
+#### Subsistema de despliegue en display de 7 segmentos.
 
 
 
