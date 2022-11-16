@@ -55,16 +55,19 @@ A continuación se muestra un diagrama de bloques sobre el funcionamiento genera
 
 #### Funcionamiento general
 
+![image](https://user-images.githubusercontent.com/111375712/201807205-852544b4-3432-4ee7-b84e-094e8adf1e96.png)
 
 
 
 #### Subsistema de lectura de datos.
 
+![Image](https://user-images.githubusercontent.com/88691484/201805761-3cc7c50f-a9f1-42db-ba6c-b9cdd7140ea5.png)
 
 
 
 #### Subsistema de cálculo de multiplicación.
 
+![Image](https://user-images.githubusercontent.com/88691484/201805794-3afae4aa-fc35-46c4-aecd-fde5521a53cb.png)
 
 
 
