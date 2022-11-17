@@ -90,8 +90,7 @@ En esta sección se puede detallar las comprobaciones realizadas de los sistemas
 
 ![image](https://user-images.githubusercontent.com/111375712/202376810-bee83eed-948d-4374-af41-032ca75dd4ae.png)
 
-
-
+![image](https://user-images.githubusercontent.com/111375712/202377945-8ea9d17e-90cb-4a5c-aa92-ac24fbbbb692.png)
 
 
 ## Análisis de consumo de recursos en la FPGA (LUTs, FFs, etc.) y del consumo de potencia que reporta la herramienta Vivado.
