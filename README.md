@@ -85,7 +85,7 @@ A continuación se muestra un diagrama de bloques sobre el funcionamiento genera
 
 #### Subsistema de conversión de binario a representación BCD.
 
-
+![Image](https://user-images.githubusercontent.com/88691484/202385115-faa86cc1-c3eb-4e19-aee5-ff5415890e22.png)
 
 
 #### Subsistema de despliegue en display de 7 segmentos.
