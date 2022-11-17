@@ -41,6 +41,11 @@ En este tercer subsistema registra el resultado del bloque anterior (16 bits con
 ![image](https://user-images.githubusercontent.com/111375712/202380009-e3ef3c92-6162-47aa-97c7-b4809ada7585.png)
 
 
+#### Imagen correspondiente ejemplo de la conversión de binario a representación BCD
+
+![image](https://user-images.githubusercontent.com/111375712/202380646-9262e15c-2cbd-46d6-befb-1693b624540d.png)
+
+
 ### Subsistema de despliegue en display de 7 segmentos
 En este tercer subsistema se toma el resultado de la multiplicación en BCD y los despliega en los dispositivos 7 segmentos disponibles en la placa, de forma decimal e incluyendo el signo, en donde se utiliza menos 6 dígitos disponibles del 7 segmentos. Por otro lado, el sistema tiene la tasa de refresco adecuada para una visualización cómoda por parte del usuario.
 
