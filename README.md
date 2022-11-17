@@ -86,10 +86,9 @@ A continuación se muestra un diagrama de bloques sobre el funcionamiento genera
 Realización de las pre-síntesis, mediante la simulaciones a nivel de RTL.
 En esta sección se puede detallar las comprobaciones realizadas de los sistemas sobre la NEXYS 4 ddr, las cuales se realizaron por medio de videollamadas entre los integrantes del grupo para observar y realizar el correcto funcionamiento del circuito.
 
-#### Sesiones realizadas entre los integrantes del grupo para la visualización y análisis del funcionamiento en Verilog para NEXYS 4
+#### Sesiones realizadas entre los integrantes del grupo durante la programación de Verilog para NEXYS 4
 
-
-
+![image](https://user-images.githubusercontent.com/111375712/202376810-bee83eed-948d-4374-af41-032ca75dd4ae.png)
 
 
 
@@ -106,4 +105,4 @@ En esta sección se puede detallar las comprobaciones realizadas de los sistemas
 
 
 ## Problemas hallados durante el trabajo
-Durante el presente trabajo se generaron una serie de problemas desde su inicio, los cuales representaron un reto importante para el equipo de trabajo, estos problemas se detallan a continuación: el principal desafío que se presentó correspondió a que en un inicio la programación se realizó para una NEXYS 4 ddr, sin embargo la placa de FPGA que pudimos conseguir en el laboratorio correspondió a una NEXYS 3, por lo que para su testbench se debió realizar por medio de simulaciones en el mismo programa Vivado, por otra parte, otros problema que se produjeron fueron durante la codificación de dos subsistemas, lo cuales orrespondieron al subsistema de lectura, especificamente a la espera del circuito antes de accionar del push button que es presionado y sostenido por 500ms, así como también se presentaron algunos problemas en el subsistema de conversión de binario a representación BCD, los cuales requirieron una mayor inversión de tiempo y una recolección de información más detallada por parte de los estudiantes.
+Durante el presente trabajo se generaron una serie de problemas desde su inicio, los cuales representaron un reto importante para el equipo de trabajo, estos problemas se detallan a continuación: el principal desafío que se presentó correspondió a que en un inicio la programación se realizó para una NEXYS 4 ddr, sin embargo la placa de FPGA que pudimos conseguir en el laboratorio correspondió a una NEXYS 3 y no se pudo realizar los testbench, por otra parte, otros problema que se produjeron fueron durante la codificación de los subsistemas, en cuanto al subsistema de conversión de binario a representación BCD así como también se presentaron problemas en el subsistema de display de 7 segmentos al iniciar el cual fue programado para NEXYS 3, los cuales requirieron una mayor inversión de tiempo y una recolección de información más detallada por parte de los estudiantes.
