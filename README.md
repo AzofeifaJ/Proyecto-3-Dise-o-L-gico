@@ -23,11 +23,12 @@ En este primer subsistema adquiere los operando A y B de 8 bits cada uno para re
 
 
 ### Subsistema para el cálculo de multiplicación
-En este segundo subsistema recibe los operandos A y B del subsistema de lectura, la operación de multiplicación se inicia cuando el subsistema de lectura le indique a este subsistema que los operandos son válidos por medio de una bandera valid. El cálculo de multiplicación con signo se realiza de manera iterativa por medio del Algoritmo de Booth. Este bloque indica al siguiente bloque consecutivo cuando el resultado de la multiplicación está estable para ser muestreado con una señal done,  representado en la siguiente imagen.
-
-#### Imagen correspondiente a
+En este segundo subsistema recibe los operandos A y B del subsistema de lectura, la operación de multiplicación se inicia cuando el subsistema de lectura le indique a este subsistema que los operandos son válidos por medio de una bandera valid. El cálculo de multiplicación con signo se realiza de manera iterativa por medio del Algoritmo de Booth. Este bloque indica al siguiente bloque consecutivo cuando el resultado de la multiplicación está estable para ser muestreado con una señal done.
 
 
+#### Imagen sobre el funcionamiento del Algoritmo de Booth
+
+![image](https://user-images.githubusercontent.com/111375712/202379401-2e4e9b56-aa33-4f63-ac59-e7c62af2c411.png)
 
 
 
@@ -35,12 +36,18 @@ En este segundo subsistema recibe los operandos A y B del subsistema de lectura,
 En este tercer subsistema registra el resultado del bloque anterior (16 bits con signo) y lo convierte en un formato BCD, además genera al menos 5 dígitos en BCD y uno de signo para el siguiente bloque, se indica al siguiente bloque por medio de una bandera de done cuando está lista la conversión para registrar, como se muestra en la imagen a continuación: 
 
 
+#### Imagen correspondiente a la conversión de binario a representación BCD
 
-
+![image](https://user-images.githubusercontent.com/111375712/202380009-e3ef3c92-6162-47aa-97c7-b4809ada7585.png)
 
 
 ### Subsistema de despliegue en display de 7 segmentos
 En este tercer subsistema se toma el resultado de la multiplicación en BCD y los despliega en los dispositivos 7 segmentos disponibles en la placa, de forma decimal e incluyendo el signo, en donde se utiliza menos 6 dígitos disponibles del 7 segmentos. Por otro lado, el sistema tiene la tasa de refresco adecuada para una visualización cómoda por parte del usuario.
+
+
+#### Imagen correspondiente al encendido de LEDs en NEXYS 4 ddr
+![image](https://user-images.githubusercontent.com/111375712/194989319-14fcad98-e482-48d3-ba70-ff9cf3102c89.png)
+
 
 #### Imagen de la distribución de los componentes en la NEXYS 4 ddr
 ![image](https://user-images.githubusercontent.com/111375712/195011801-afe0480f-6058-425c-bd41-d2c9452f1d77.png)
