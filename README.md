@@ -90,6 +90,7 @@ A continuación se muestra un diagrama de bloques sobre el funcionamiento genera
 
 #### Subsistema de despliegue en display de 7 segmentos.
 
+![image](https://user-images.githubusercontent.com/111375712/202383324-ee7b30ae-a087-43fc-9832-8e684334e8c5.png)
 
 
 
