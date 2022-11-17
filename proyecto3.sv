@@ -1,28 +1,58 @@
-module proyecto3 (reloj, reinicio, operandoA, operandoB, sieteSegmentos0, sieteSegmentos1, sieteSegmentos2, sieteSegmentos3, sieteSegmentos4, sieteSegmentos5);
+module proyecto3 (reloj, reinicio, operandoA, operandoB, iniciarMultiplicacion, ledOperandoA, ledOperandoB, sieteSegmentosA, sieteSegmentosB, sieteSegmentosC);
 	input reloj;
 	input reinicio;
-	input[7:0] operandoA;
-	input[7:0] operandoB;
-	output[6:0] sieteSegmentos0;
-	output[6:0] sieteSegmentos1;
-	output[6:0] sieteSegmentos2;
-	output[6:0] sieteSegmentos3;
-	output[6:0] sieteSegmentos4;
-	output[6:0] sieteSegmentos5;
+	input[3:0] operandoA;
+	input[3:0] operandoB;
+	input iniciarMultiplicacion;
 	
-	wire[15:0] resultado;
-	wire[2:0] qlsb;
+	output ledOperandoA;
+	output ledOperandoB;
+	output[6:0] sieteSegmentosA;
+	output[6:0] sieteSegmentosB;
+	output[6:0] sieteSegmentosC;
+
+	wire[3:0] wireOperandoA;
+	wire[3:0] wireOperandoB;
+	wire wireBanderaValida;
 	
-	multiplicador multiplicadorInstancia 
-	(
-		.clock(reloj),
-		.reset(reinicio),
-		.A(operandoA),
-		.B(operandoB),
-		.mult_control_t(1'b1),
-		.mult_control(1'b1),
-		.Q_LSB(qlsb),
-		.Y(resultado)
-	);
+	wire[7:0] wireResultadoBinario;
+	wire wireBanderaLista;
 	
+	wire[11:0] wireResultadoBCD;
+	wire banderaConvertida;
+	
+	subsistemaLectura instanciaSubsistemaLectura(.reloj(reloj), 
+																.reinicio(reinicio),
+																.operandoEntradaA(operandoA),
+																.operandoEntradaB(operandoB),
+																.iniciarMultiplicacion(iniciarMultiplicacion),
+																.operandoSalidaA(wireOperandoA),
+																.operandoSalidaB(wireOperandoB),
+																.ledOperandoA(ledOperandoA),
+																.ledOperandoB(ledOperandoB),
+																.banderaValida(wireBanderaValida));
+	
+	subsistemaMultiplicacion instanciaSubsistemaMultiplicacion(.reloj(reloj),
+																				  .reinicio(reinicio),
+																				  .operandoA(wireOperandoA),
+																				  .operandoB(wireOperandoB),
+																				  .banderaValida(wireBanderaLista),
+																				  .resultado(wireResultadoBinario),
+																				  .banderaLista(wireBanderaLista));
+	
+	subsistemaConversion instanciaSubsistemaConversion(.reloj(reloj),
+																		.reinicio(reinicio),
+																		.resultadoEntrada(wireResultadoBinario),
+																		.banderaLista(wireBanderaLista),
+																		.bcd(wireResultadoBCD),
+																		.banderaConvertida(wireBanderaConvertida));
+	
+	subsistemaDisplay instanciaSubsistemaDisplay(.reloj(reloj),
+																.reinicio(reinicio),
+																.resultadoBCD(wireResultadoBCD),
+																.banderaConvertida(wireBanderaConvertida),
+																.sieteSegmentosA(sieteSegmentosA),
+																.sieteSegmentosB(sieteSegmentosB),
+																.sieteSegmentosC(sieteSegmentosC));
+
 endmodule 
